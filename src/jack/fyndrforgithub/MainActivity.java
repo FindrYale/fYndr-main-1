@@ -11,6 +11,29 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+      //START OF ABHI's CODE
+        Firebase.setAndroidContext(this);
+        /*possible problems with this: 
+         Has firebase been loaded although libs file contains firebase.jar in Eclipse?
+         */
+        Firebase ref = new Firebase("https://fiery-fire-1683.firebaseio.com/"); //this initializes the unique Firebase url, where data can be viewed
+        Map<String,String> map1 = new HashMap <String, String> (); //creates a Map
+    	
+		String itemLost = "ab"; //This string serves as the key 
+		String location = "cd"; //This string serves as the value 
+		//int [] Location = new int [2];
+		//Location[0] = 1;
+		//Location[1] = 2;
+		//puts the keys and strings into Map. This will need to be played with, to receive any entered string.
+		//Ideally we will need UserName/Password thus introducing the User Class  
+		map1.put(itemLost, location); 
+		System.out.println("Output");
+		//this creates a Firebase reference called "map1"	
+		Firebase map1Ref = ref.child("map1"); 
+		//When we call map1Ref, using the setValue function, we create a Child on the unique Firebase URL.
+		//the argument to setValue calls the informatio in map1 to be passed onto our URL.  
+		map1Ref.setValue(map1);
+		//END OF ABHI's CODE!
         setContentView(R.layout.activity_main);
     }
 
