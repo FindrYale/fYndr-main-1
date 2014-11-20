@@ -1,5 +1,7 @@
 package jack.fyndrforgithub;
 
+import package1.function;
+import package1.var;
 import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
@@ -37,6 +39,23 @@ public class MainActivity extends ActionBarActivity {
         setContentView(R.layout.activity_main);
     }
 
+    //Start of Jack's Code
+    var map;
+    function initialize() {
+      var myLatLng = new google.maps.LatLng(-25.363882,131.044922);
+      var mapOptions = {
+        zoom: 4,
+        center: myLatLng
+      }
+
+       map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
+          
+          
+       google.maps.event.addListener(map, 'click', function(event) {
+       		system.out.print(event.latLng);;
+       });
+       
+       //End of Jack's Code
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
