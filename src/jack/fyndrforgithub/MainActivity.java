@@ -6,6 +6,15 @@ import android.support.v7.app.ActionBarActivity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.app.Activity;
+import android.content.Intent;
+import android.os.Bundle;
+import android.view.View;
+import android.view.View.OnClickListener;
+import android.widget.Button;
+import android.widget.Toast;
+
+
 //Omegar test
 
 public class MainActivity extends ActionBarActivity {
@@ -37,7 +46,34 @@ public class MainActivity extends ActionBarActivity {
 		//the argument to setValue calls the informatio in map1 to be passed onto our URL.  
 		map1Ref.setValue(map1);
 		//END OF ABHI's CODE!
+        
+        */
         setContentView(R.layout.activity_main);
+        
+        button = (Button) findViewById(R.id.button);
+
+		button.setOnClickListener(new OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+
+				try {
+
+					Intent smsIntent = new Intent(Intent.ACTION_VIEW);
+					smsIntent.putExtra("sms_body", "HelloWorld");
+					smsIntent.setType("vnd.android-dir/mms-sms");
+					startActivity(smsIntent);
+
+				} catch (Exception e) {
+					Toast.makeText(getApplicationContext(), "SMS failed!",
+							Toast.LENGTH_LONG).show();
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+}
+        
     }
 
     //Start of Jack's Code
