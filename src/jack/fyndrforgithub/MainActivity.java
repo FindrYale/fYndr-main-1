@@ -76,7 +76,9 @@ public class MainActivity extends ActionBarActivity {
         
     }
 
-    //Start of Jack's Code
+    //Start of Jack's Code    
+    public static string returnLocation()  {
+    
     var map;
     function initialize() {
       var myLatLng = new google.maps.LatLng(-25.363882,131.044922);
@@ -92,15 +94,17 @@ public class MainActivity extends ActionBarActivity {
       <div id="googleMap" style="width:500px;height:380px;"></div>
       
       //creates the map inside the <div> element, to the parameters set up by mapOptions
-       map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
-          
+       map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);          
      
     	}
     	//Executes the initialize() function
        google.maps.event.addDomListener(window, 'load', initialize);    
        
-       google.maps.event.addListener(map, 'click', function(event) {
-       		system.out.print(event.latLng);
+       google.maps.event.addListener(map, 'click', function(event) { 	
+    	   new Point location = Point (event.latLng);   
+    	   string location2 = new string location.toString();       	
+    	   return location2;
+       }	   
        });
        
        //End of Jack's Code
