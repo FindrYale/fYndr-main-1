@@ -13,12 +13,13 @@ public class MainActivity extends ActionBarActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        /*
       //START OF ABHI's CODE
         Firebase.setAndroidContext(this);
         /*possible problems with this: 
          Has firebase been loaded although libs file contains firebase.jar in Eclipse?
          */
-        Firebase ref = new Firebase("https://fiery-fire-1683.firebaseio.com/"); //this initializes the unique Firebase url, where data can be viewed
+       /* Firebase ref = new Firebase("https://fiery-fire-1683.firebaseio.com/"); //this initializes the unique Firebase url, where data can be viewed
         Map<String,String> map1 = new HashMap <String, String> (); //creates a Map
     	
 		String itemLost = "ab"; //This string serves as the key 
@@ -43,16 +44,27 @@ public class MainActivity extends ActionBarActivity {
     var map;
     function initialize() {
       var myLatLng = new google.maps.LatLng(-25.363882,131.044922);
+      
+      //sets up the default map with a zoom of 4, center of myLatLng (the middle of Old Campus) 
       var mapOptions = {
         zoom: 4,
         center: myLatLng
+        mapTypeId: google.maps.MapTypeId.ROADMAP
       }
-
+      
+      //creates a container (a <div> element) for the map with a given height and width
+      <div id="googleMap" style="width:500px;height:380px;"></div>
+      
+      //creates the map inside the <div> element, to the parameters set up by mapOptions
        map = new google.maps.Map(document.getElementById("map-canvas"), mapOptions);
           
-          
+     
+    	}
+    	//Executes the initialize() function
+       google.maps.event.addDomListener(window, 'load', initialize);    
+       
        google.maps.event.addListener(map, 'click', function(event) {
-       		system.out.print(event.latLng);;
+       		system.out.print(event.latLng);
        });
        
        //End of Jack's Code
@@ -83,7 +95,7 @@ public class MainActivity extends ActionBarActivity {
      * Define a request code to send to Google Play services
      * This code is returned in Activity.onActivityResult
      */
-    private final static int
+/*    private final static int
             CONNECTION_FAILURE_RESOLUTION_REQUEST = 9000;
     ...
     // Define a DialogFragment that displays the error dialog
@@ -114,9 +126,14 @@ public class MainActivity extends ActionBarActivity {
      * Handle results returned to the FragmentActivity
      * by Google Play services
      */
-     @Override
+   
+        /*
+        
+        @Override
     protected void onActivityResult(
-            int requestCode, int resultCode, Intent data) {
+            int requestCode, int resultCode, Intent data) { 
+    	 
+    	 
         // Decide what to do based on the original request code
         switch (requestCode) {
             ...
@@ -125,20 +142,20 @@ public class MainActivity extends ActionBarActivity {
              * If the result code is Activity.RESULT_OK, try
              * to connect again
              */
-                switch (resultCode) {
+    /*            switch (resultCode) {
                     ...
                     case Activity.RESULT_OK :
                     /*
                      * Try the request again
                      */
-                    ...
+              /*      ...
                     break;
                 }
             ...
         }
         ...
     }
-    ...
+    ...  
     private boolean servicesConnected() {
         // Check that Google Play services is available
         int resultCode =
@@ -175,7 +192,11 @@ public class MainActivity extends ActionBarActivity {
             }
         }
     }
+    
+    
     ...
     //End Omegar Test Code
-
+    */
+      
+}
 }
